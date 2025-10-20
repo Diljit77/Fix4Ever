@@ -6,17 +6,23 @@ import api from "../api/axios";
 const NotificationsDropdown: React.FC = () => {
   const { notifications, setNotifications, markRead } = useNotificationStore();
 
-  useEffect(() => {
-    const loadNotifications = async () => {
-      try {
-        const res = await api.get("/notifications");
-        setNotifications(res.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    loadNotifications();
-  }, []);
+useEffect(() => {
+  const loadNotifications = async () => {
+    try {
+      const res = await api.get("/notifications");
+      setNotifications(res.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  loadNotifications(); 
+
+  const interval = setInterval(loadNotifications, 2000); 
+
+  return () => clearInterval(interval); 
+}, []);
+
 
   const handleMarkRead = async (id: string) => {
     try {

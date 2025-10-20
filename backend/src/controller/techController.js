@@ -121,13 +121,13 @@ export const getTechDashboard = async (req, res) => {
 export const getTechnicianRequests = async (req, res) => {
   try {
    
-    const tech = await Technician.findOne({ userId: req.user.id });
+    const tech = await Technician.findOne({ userId: req.user.id }).sort({ createdAt: -1 });
     if (!tech) return res.status(404).json({ message: "Technician not found" });
 
    
     const requests = await ServiceRequest.find({ assignedTech: tech._id })
       .populate("userId", "name email")
-      .populate("assignedTech", "name email skills");
+      .populate("assignedTech", "name email skills").sort({ createdAt: -1 });
 
     res.json(requests);
   } catch (err) {

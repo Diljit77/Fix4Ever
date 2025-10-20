@@ -33,19 +33,25 @@ const RequestDetail: React.FC = () => {
 
   const user = JSON.parse(localStorage.getItem('fix4ever_user') || '{}');
 
-  useEffect(() => {
-    const load = async () => {
-      try {
-        const res = await api.get(`/requests/${id}`);
-        setRequest(res.data);
-        const response = await api.get('/technicians/dashboard');
-        setTechnician(response.data.tech);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    load();
-  }, [id]);
+useEffect(() => {
+  const load = async () => {
+    try {
+      const res = await api.get(`/requests/${id}`);
+      setRequest(res.data);
+      updateRequest(id!, res.data);
+      const response = await api.get('/technicians/dashboard');
+      setTechnician(response.data.tech);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  load(); 
+
+  const interval = setInterval(load, 5000); 
+  return () => clearInterval(interval);
+}, [id, updateRequest]);
+
 
   const refresh = async () => {
     try {
@@ -125,7 +131,7 @@ const RequestDetail: React.FC = () => {
         <p className="text-gray-600 dark:text-gray-400">
           <strong>Status:</strong>{' '}
           <span className="badge bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 px-3 py-1 rounded-lg">
-            {request.status.toUpperCase()}
+            {request.status}
           </span>
         </p>
         <p className="text-gray-600 dark:text-gray-400">

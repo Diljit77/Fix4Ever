@@ -76,10 +76,11 @@ export const createRequest = async (req, res) => {
 
 export const getRequests = async (req, res) => {
   try {
-    const requests = await ServiceRequest.find({ userId: req.user.id });
+    const requests = await ServiceRequest.find({ userId: req.user.id }).sort({ createdAt: -1 });
     res.json(requests);
   } catch (err) {
     res.status(500).json({ message: err.message });
+    console.error("Get requests error:", err.message);
   }
 };
 
@@ -144,7 +145,7 @@ export const getAllRequests = async (req, res) => {
   try {
     const requests = await ServiceRequest.find()
       .populate("userId", "name email")
-      .populate("assignedTech", "name email skills");
+      .populate("assignedTech", "name email skills").sort({ createdAt: -1 });
     res.json(requests);
   } catch (err) {
     res.status(500).json({ message: err.message });
