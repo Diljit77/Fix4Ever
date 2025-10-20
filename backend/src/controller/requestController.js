@@ -171,7 +171,7 @@ export const approveStep = async (req, res) => {
     const request = await ServiceRequest.findById(id);
     if (!request) return res.status(404).json({ message: "Request not found" });
 
-    if (!["traveling", "on-site"].includes(step)) {
+    if (!["created", "assigned", "accepted", "traveling", "on-site", "completed"].includes(step)) {
       return res.status(400).json({ message: "Invalid step for approval" });
     }
 console.log(request.userId)
