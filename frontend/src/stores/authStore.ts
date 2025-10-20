@@ -13,14 +13,14 @@ export const useAuthStore = create<AuthState>((set) => ({
   token: localStorage.getItem('fix4ever_token'),
   user: JSON.parse(localStorage.getItem('fix4ever_user') || 'null'),
   
-  // Sets both token and user
+
   setAuth: (token, user) => {
     localStorage.setItem('fix4ever_token', token)
     localStorage.setItem('fix4ever_user', JSON.stringify(user))
     set({ token, user })
   },
 
-  // Sets only user (useful in profile update)
+  
   setUser: (user) => {
     localStorage.setItem('fix4ever_user', JSON.stringify(user))
     set({ user })

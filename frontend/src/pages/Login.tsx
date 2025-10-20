@@ -39,7 +39,6 @@ const Login: React.FC = () => {
           <FiLogIn /> Login
         </h2>
 
-        {/* Email */}
         <div className="flex items-center gap-2 mb-3 border-b border-base-300 pb-2">
           <FiMail className="text-gray-400" />
           <input
@@ -52,7 +51,7 @@ const Login: React.FC = () => {
           />
         </div>
 
-        {/* Password */}
+
         <div className="flex items-center gap-2 mb-3 border-b border-base-300 pb-2 relative">
           <FiLock className="text-gray-400" />
           <input

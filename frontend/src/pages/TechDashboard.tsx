@@ -166,7 +166,7 @@ const TechDashboard: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* 🔧 Assigned Jobs */}
+     
       <h2 className="text-3xl font-bold text-primary dark:text-blue-400 mt-10 mb-4">
         Assigned Jobs
       </h2>

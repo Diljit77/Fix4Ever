@@ -54,11 +54,11 @@ export const getMe = async (req, res) => {
   try {
     const userId = req.user.id;
 
-    // Fetch user info
+
     const user = await User.findById(userId).select("-password");
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    // If technician, also fetch skills
+    
     let techData = null;
     if (user.role === "technician") {
       techData = await Technician.findOne({ userId }).select("skills");
@@ -74,20 +74,19 @@ export const getMe = async (req, res) => {
   }
 };
 
-// Update current user profile
+
 export const updateMe = async (req, res) => {
   try {
     const userId = req.user.id;
     const { name, email, skills } = req.body;
 
-    // Update User data
+
     const user = await User.findByIdAndUpdate(
       userId,
       { name, email },
       { new: true, runValidators: true }
     ).select("-password");
 
-    // Update Technician skills if role is technician
     if (user.role === "technician" && skills) {
       await Technician.findOneAndUpdate(
         { userId },

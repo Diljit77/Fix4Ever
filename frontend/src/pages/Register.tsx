@@ -42,7 +42,7 @@ const Register: React.FC = () => {
           />
         </div>
 
-        {/* Email */}
+  
         <div className="flex items-center gap-2 mb-3 border-b border-base-300 pb-2">
           <FiMail className="text-gray-400" />
           <input
@@ -55,7 +55,7 @@ const Register: React.FC = () => {
           />
         </div>
 
-        {/* Password */}
+
         <div className="flex items-center gap-2 mb-3 border-b border-base-300 pb-2 relative">
           <FiLock className="text-gray-400" />
           <input
@@ -75,7 +75,7 @@ const Register: React.FC = () => {
           </button>
         </div>
 
-        {/* Role Toggle */}
+
         <div className="flex items-center justify-between mb-4 mt-2">
           <span className="font-medium text-gray-600">Register as:</span>
           <div className="flex items-center gap-4">

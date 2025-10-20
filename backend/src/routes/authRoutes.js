@@ -7,6 +7,6 @@ router.post("/register", register);
 router.post("/login", login);
 router.get("/me", authMiddleware, getMe);
 
-// Update logged-in user
+
 router.patch("/me", authMiddleware, updateMe);
 export default router;

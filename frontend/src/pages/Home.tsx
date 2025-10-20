@@ -22,7 +22,6 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Features */}
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-4xl">
         <div className="card bg-white dark:bg-gray-900 shadow-lg rounded-2xl p-6 hover:scale-[1.03] transition-transform">
           <FiMapPin className="text-3xl text-primary mb-2" />

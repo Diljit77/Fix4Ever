@@ -75,7 +75,7 @@ const ProfilePage: React.FC = () => {
           )}
         </div>
 
-        {/* Name & Email */}
+    
         <div className="space-y-4">
           <div>
             <label className="block font-medium mb-1 text-gray-700 dark:text-gray-300">Name:</label>
@@ -95,7 +95,6 @@ const ProfilePage: React.FC = () => {
             )}
           </div>
 
-          {/* Skills */}
           {profile.role === "technician" && (
             <div>
               <label className="block font-medium mb-1 text-gray-700 dark:text-gray-300">Skills:</label>

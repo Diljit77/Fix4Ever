@@ -32,7 +32,7 @@ function App() {
         closeOnClick
         pauseOnHover
         draggable
-        theme="dark" // or 
+        theme="dark" 
       />
   const hideNavFooter = location.pathname === "/login" || location.pathname === "/register";
 
